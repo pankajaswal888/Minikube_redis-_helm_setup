@@ -1,0 +1,9 @@
+image:
+  repository: redis
+  tag: latest
+  pullPolicy: IfNotPresent
+
+redis:
+  host: redis
+  port: 6379
+
