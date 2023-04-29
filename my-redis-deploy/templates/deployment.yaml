@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "my-redis-deploy.fullname" . }}
+  labels:
+    app: {{ include "my-redis-deploy.name" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "my-redis-deploy.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "my-redis-deploy.name" . }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["sh", "-c", "tail -f /dev/null"]
+          env:
+            - name: REDIS_HOST
+              value: {{ .Values.redis.host }}
+            - name: REDIS_PORT
+              value: "{{ .Values.redis.port }}"
+          ports:
+            - name: redis
+              containerPort: 6379
+
