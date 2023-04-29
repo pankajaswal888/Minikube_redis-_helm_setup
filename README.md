@@ -1,6 +1,7 @@
 # Minikube_redis-_helm_setup
-# script to deploy minikube , redis helm chart on the cluster
-## PART 1 -> script to deploy a minikube cluster
+script to deploy minikube , redis helm chart on the cluster
+=====================
+##PART 1 -> script to deploy a minikube cluster
 Save this script to a file, say minikube-setup.sh. Then make it executable by running
 run the script with ./minikube-setup.sh
 This script will install the required dependencies, including kubectl and Minikube, start a Minikube cluster using the none driver (which runs Kubernetes directly on your host machine), and verify that the cluster is running by checking the cluster information with kubectl cluster-info.
